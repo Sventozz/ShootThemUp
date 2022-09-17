@@ -38,4 +38,5 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
   private:
     void MoveForward(float Amount);
     void MoveRight(float Amount);
+
 };
