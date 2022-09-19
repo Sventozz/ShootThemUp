@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{BAEBF200-433B-0AF5-A07B-88BDE94CD225}",
+	"EngineAssociation": "5.0",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -19,6 +19,15 @@
 			"Enabled": true,
 			"TargetAllowList": [
 				"Editor"
+			]
+		},
+		{
+			"Name": "Bridge",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux"
 			]
 		}
 	]
