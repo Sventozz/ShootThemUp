@@ -20,6 +20,9 @@ class SHOOTTHEMUP_API USTUHealthComponent : public UActorComponent
     }
 
   protected:
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Health", meta = (ClampMin = "0.0", ClampMax = "1000.0"))
+    float MaxHealth = 100.0f;
+
     virtual void BeginPlay() override;
 
   private:
