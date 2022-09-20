@@ -30,7 +30,7 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
     USTUHealthComponent *HealthComponent;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
-    UTextRenderComponent* HealthTextComponnet;
+    UTextRenderComponent *HealthTextComponnet;
 
     virtual void BeginPlay() override;
 
