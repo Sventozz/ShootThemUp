@@ -25,7 +25,7 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FOnHealthChanged, float)
     UFUNCTION(BlueprintCallable)
     bool IsDead() const
     {
-        return Health <= 0.0f;
+        return FMath::IsNearlyZero(Health);
     }
 
     FOnDeath OnDeath;
@@ -58,4 +58,6 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FOnHealthChanged, float)
                          class AController *InstigatedBy, AActor *DamageCauser);
 
     void HealUpdate();
+
+    void SetHealth(float NewHealth);
 };
