@@ -35,6 +35,12 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
     UPROPERTY(EditDefaultsOnly, Category = "Animation")
     UAnimMontage *DeathAnimMontag;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Movement")
+    FVector2D LandedDamageVelocity = FVector2D(900.0f, 1200.0f);
+
+    UPROPERTY(EditDefaultsOnly, Category = "Movement")
+    FVector2D LandedDamage = FVector2D(10.0f, 100.0f);
+
     virtual void BeginPlay() override;
 
   public:
@@ -61,4 +67,7 @@ class SHOOTTHEMUP_API ASTUBaseCharacter : public ACharacter
     void OnDeath();
 
     void OnHealthChanged(float Health);
+
+    UFUNCTION()
+    void OnGroundLanded(const FHitResult &Hit);
 };
