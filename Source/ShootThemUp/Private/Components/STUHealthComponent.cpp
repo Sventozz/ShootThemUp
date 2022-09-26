@@ -4,6 +4,8 @@
 #include "GameFramework/Actor.h"
 //#include "Dev/STUFireDamageType.h"
 //#include "Dev/STUIceDamageType.h"
+#include "Engine/World.h"
+#include "TimerManager.h"
 
 DEFINE_LOG_CATEGORY_STATIC(HealthComponentLog, All, All);
 
@@ -43,6 +45,11 @@ void USTUHealthComponent::OnTakeAnyDamage(AActor *DamagedActor, float Damage, co
     {
         OnDeath.Broadcast();
     }
+    else if (AutoHeal && GetWorld())
+    {
+        GetWorld()->GetTimerManager().SetTimer(HealTimerHandle, this, &USTUHealthComponent::HealUpdate, HealUpdateTime,
+                                               true, HealDelay);
+    }
 
     // UE_LOG(HealthComponentLog, Display, TEXT("Damage: %f"), Damage);
 
@@ -57,4 +64,10 @@ void USTUHealthComponent::OnTakeAnyDamage(AActor *DamagedActor, float Damage, co
              UE_LOG(HealthComponentLog, Display, TEXT("So cooooold !!!"));
          }
      }*/
+}
+
+void USTUHealthComponent::HealUpdate()
+{
+    Health = FMath::Min(Health + HealModifier, MaxHealth);
+    OnHealthChanged.Broadcast(Health);
 }
